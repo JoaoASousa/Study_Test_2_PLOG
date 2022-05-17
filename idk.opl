@@ -1,0 +1,21 @@
+{string} District = ["x","y","z","w","k"];
+int Distance[District] = [];
+int Electors[District] = [];
+
+int NDays = 3;
+int MaxDist = 700;
+
+dvar boolean visited[District];
+dvar float+ totalDistance;
+dvar float+ totalElectors;
+
+maximize sum(d in District) Electors[d] * visited[d];
+
+subject to {
+    sum(d in District) visited[d] <= NDays;
+
+    sum(d in District) Distance[d] * visited[d] == totalDistance;
+    (...)
+
+    totalDistance <= MaxDist;
+}
